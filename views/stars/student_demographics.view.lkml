@@ -36,53 +36,108 @@ view: student_demographics {
     sql: ${TABLE}.school_year ;;
   }
 
-  measure: enrollment {
-    type: sum
+  dimension: enrollment {
+    type: number
     sql: ${TABLE}.enrollment ;;
   }
 
-  measure: female_students {
-    type: sum
+  dimension: female_students {
+    type: number
     sql: ${TABLE}.female_students ;;
   }
 
-  measure: male_students {
-    type: sum
+  dimension: female_percentage {
+    type: number
+    value_format: "0.0%"
+    sql: ${TABLE}.female_students*1.0/${TABLE}.enrollment ;;
+  }
+
+  dimension: male_students {
+    type: number
     sql: ${TABLE}.male_students ;;
   }
 
-  measure: food_program_participants {
-    type: sum
+  dimension: male_percentage {
+    type: number
+    value_format: "0.0%"
+    sql: ${TABLE}.male_students*1.0/${TABLE}.enrollment ;;
+  }
+
+  dimension: food_program_participants {
+    type: number
     sql: ${TABLE}.food_program_participants ;;
   }
 
-  measure: english_learners {
-    type: sum
+  dimension: food_program_participant_percentage {
+    type: number
+    value_format: "0.0%"
+    sql: ${TABLE}.food_program_participants*1.0/${TABLE}.enrollment ;;
+  }
+
+  dimension: english_learners {
+    type: number
     sql: ${TABLE}.english_learners ;;
   }
 
-  measure: hispanic_students {
-    type: sum
+  dimension: english_learner_percentage {
+    type: number
+    value_format: "0.0%"
+    sql: ${TABLE}.english_learners*1.0/${TABLE}.enrollment ;;
+  }
+
+  dimension: hispanic_students {
+    type: number
     sql: ${TABLE}.hispanic_students ;;
   }
 
-  measure: caucasian_students {
-    type: sum
+  dimension: hispanic_percentage {
+    type: number
+    value_format: "0.0%"
+    sql: ${TABLE}.hispanic_students*1.0/${TABLE}.enrollment ;;
+  }
+
+  dimension: caucasian_students {
+    type: number
     sql: ${TABLE}.caucasian_students ;;
   }
 
-  measure: black_students {
-    type: sum
+  dimension: caucasian_percentage {
+    type: number
+    value_format: "0.0%"
+    sql: ${TABLE}.caucasian_students*1.0/${TABLE}.enrollment ;;
+  }
+
+  dimension: black_students {
+    type: number
     sql: ${TABLE}.black_students ;;
   }
 
-  measure: native_students {
-    type: sum
+  dimension: black_percentage {
+    type: number
+    value_format: "0.0%"
+    sql: ${TABLE}.black_students*1.0/${TABLE}.enrollment ;;
+  }
+
+  dimension: native_students {
+    type: number
     sql: ${TABLE}.native_students ;;
   }
 
-  measure: other_race_students {
-    type: sum
+  dimension: native_percentage {
+    type: number
+    value_format: "0.0%"
+    sql: ${TABLE}.native_students*1.0/${TABLE}.enrollment ;;
+  }
+
+  dimension: other_race_students {
+    type: number
     sql: ${TABLE}.other_race_students ;;
   }
+
+  dimension: other_race_percentage {
+    type: number
+    value_format: "0.0%"
+    sql: ${TABLE}.other_race_students*1.0/${TABLE}.enrollment ;;
+  }
+
 }

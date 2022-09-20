@@ -5,7 +5,7 @@ include: "/views/**/*.view"
 
 datagroup: ped_epp_default_datagroup {
   # sql_trigger: SELECT MAX(id) FROM etl_log;;
-  max_cache_age: "1 hour"
+  max_cache_age: "24 hour"
 }
 
 persist_with: ped_epp_default_datagroup
@@ -32,13 +32,13 @@ explore: staff_consolidated {
   }
   join: student_demographics {
     relationship: many_to_one
-    type: left_outer
+    type: inner
     sql_on: ${student_demographics.location_key} = ${staff_consolidated.location_key}
         and ${student_demographics.school_year} = ${staff_consolidated.school_year};;
   }
   join: school_principal {
     relationship: many_to_one
-    type: left_outer
+    type: inner
     sql_on: ${staff_consolidated.location_key} = ${school_principal.location_key}
       and ${staff_consolidated.school_year} = ${school_principal.school_year};;
   }

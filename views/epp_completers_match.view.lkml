@@ -85,6 +85,7 @@ view: epp_completers_match {
 
   dimension: university_id {
     type: string
+    primary_key: yes
     sql: ${TABLE}.university_id ;;
   }
 

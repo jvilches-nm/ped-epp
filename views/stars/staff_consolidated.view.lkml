@@ -351,6 +351,7 @@
 
   dimension: staff_snapshot_key {
     type: number
+    primary_key: yes
     sql: ${TABLE}.STAFF_SNAPSHOT_KEY ;;
   }
 

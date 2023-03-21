@@ -60,7 +60,13 @@ view: school_principal {
       sql: ${TABLE}.staff_name ;;
     }
 
-    dimension: assignment_category {
+  dimension: principal_email {
+    hidden: no
+    type: string
+    sql: ${TABLE}.staff_email_addr ;;
+  }
+
+  dimension: assignment_category {
       hidden: yes
       type: string
       sql: ${TABLE}.assignment_category ;;

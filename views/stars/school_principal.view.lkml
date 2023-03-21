@@ -2,11 +2,13 @@ view: school_principal {
 
    derived_table: {
      sql: select * from
-             (select district_key, location_key, school_year, staff_snapshot_date, staff_id, assignment_code, assignment, assignment_category, staff_name,
-              rank () over (partition by district_code, location_id, school_year, staff_snapshot_date order by assignment_category desc, assignment desc) principal_rank
-               from stars.staff_assignment_snapshot where (assignment_category= 'Principal' or (assignment_category='Administrator' and assignment='Superintendent'))) x
-               where principal_rank=1 ;;
-      persist_for: "24 hour"
+             (select sas.district_key, sas.location_key, sas.school_year, sas.staff_snapshot_date, sas.staff_id, sas.assignment_code, sas.assignment, sas.assignment_category, sas.staff_name, ss.staff_email_addr,
+              rank () over (partition by sas.district_code, sas.location_id, sas.school_year, sas.staff_snapshot_date order by assignment_category desc, assignment desc) principal_rank
+                 from stars.staff_assignment_snapshot sas
+                      inner join stars.staff_snapshot ss on sas.staff_id=ss.staff_id and sas.staff_snapshot_date=ss.snapshot_date
+                 where (assignment_category= 'Principal' or (assignment_category='Administrator' and assignment='Superintendent'))) x
+        where principal_rank=1 ;;
+      datagroup_trigger: ped_epp_default_datagroup
       indexes: ["district_key", "location_key", "school_year", "staff_snapshot_date", "staff_id"]
    }
 

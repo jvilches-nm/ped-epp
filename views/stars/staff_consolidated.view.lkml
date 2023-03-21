@@ -98,6 +98,11 @@
     sql: ${TABLE}.Highest_Degree_Institution ;;
   }
 
+  dimension: highest_degree_institution_masked {
+    type: string
+    sql: 'xxxx' + left(${TABLE}.Highest_Degree_Institution_Code,1) ;;
+  }
+
   dimension: highest_degree_institution_code {
     type: string
     sql: ${TABLE}.Highest_Degree_Institution_Code ;;
@@ -299,6 +304,11 @@
     sql: ${TABLE}.STAFF_EMAIL_ADDR ;;
   }
 
+  dimension: staff_email_masked {
+    type: string
+    sql: left(${TABLE}.STAFF_EMAIL_ADDR, 1) + 'xxx@xxx.xxx' ;;
+  }
+
   dimension: staff_first_nm {
     type: string
     sql: ${TABLE}.STAFF_FIRST_NM ;;
@@ -343,7 +353,10 @@
     type: string
     sql: ${TABLE}.STAFF_NAME ;;
   }
-
+  dimension: staff_name_masked {
+    type: string
+    sql: left(${TABLE}.staff_name, 1) + 'xxxxxxxxx' ;;
+  }
   dimension: staff_qualif_desc {
     type: string
     sql: ${TABLE}.STAFF_QUALIF_DESC ;;

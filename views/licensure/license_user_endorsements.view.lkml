@@ -41,9 +41,15 @@ view: license_user_endorsements {
     sql: ${TABLE}.certNum ;;
   }
 
+  dimension: cert_num_masked {
+    type: string
+    sql: 'xxxx'+ right(${TABLE}.certNum, 1) ;;
+  }
+
+
   dimension: cert_status {
     type: string
-    sql: ${TABLE}.certStatus ;;
+    sql: case ${TABLE}.certStatus when 'ISSUED' then 'ISSUED' else 'UNKNOWN' end;;
   }
 
   dimension: cert_type {

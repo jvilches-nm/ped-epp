@@ -18,6 +18,10 @@ view: epp_completers_match {
     sql: ${TABLE}.staff_id ;;
   }
 
+  dimension: staff_birthday_masked {
+    type: string
+    sql:  'xxxx-xx-xx' + left(${TABLE}.Birthdate,0) ;;
+  }
 
   dimension_group: birthdate {
     type: time
@@ -38,6 +42,11 @@ view: epp_completers_match {
     sql: ${TABLE}.first_name ;;
   }
 
+  dimension: first_initial {
+    type: string
+    sql: left(${TABLE}.first_name, 1) ;;
+  }
+
   dimension: graduation {
     type: string
     sql: ${TABLE}.graduation ;;
@@ -46,6 +55,11 @@ view: epp_completers_match {
   dimension: last_name {
     type: string
     sql: ${TABLE}.last_name ;;
+  }
+
+  dimension: last_initial {
+    type: string
+    sql: left(${TABLE}.last_name,1) ;;
   }
 
   dimension: license {
@@ -87,7 +101,30 @@ view: epp_completers_match {
     type: string
     primary_key: yes
     sql: ${TABLE}.university_id ;;
-  }
+    link: {
+      label: "Masked Match Detail"
+      url: "https://nmpedpublic.cloud.looker.com/dashboards/485?University%20ID:={{ epp_completers_match.university_id._value }} ?University:={{ epp_completers_match.university._value }}"
+    }
+    link: {
+      label: "Match Detail"
+      url: "https://nmpedpublic.cloud.looker.com/dashboards/261?University%20ID:={{ epp_completers_match.university_id._value }}?University:={{ epp_completers_match.university._value }}"
+    }
+    }
+
+  dimension: university_id_masked {
+    type: string
+    primary_key: yes
+    sql: 'xxxxxx' + right(${TABLE}.university_id, 3) ;;
+    link: {
+      label: "Masked Match Detail"
+      url: "https://nmpedpublic.cloud.looker.com/dashboards/485?University%20ID:={{ epp_completers_match.university_id._value }} ?University:={{ epp_completers_match.university._value }}"
+    }
+    link: {
+      label: "Match Detail"
+      url: "https://nmpedpublic.cloud.looker.com/dashboards/261?University%20ID:={{ epp_completers_match.university_id._value }}?University:={{ epp_completers_match.university._value }}"
+    }
+    }
+
 
   measure: ped_staff_count {
     type: sum

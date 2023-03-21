@@ -4,7 +4,7 @@ connection: "dm02"
 include: "/views/**/*.view"
 
 datagroup: ped_epp_default_datagroup {
-  # sql_trigger: SELECT MAX(id) FROM etl_log;;
+  sql_trigger: SELECT max(modify_date) FROM sys.tables;;
   max_cache_age: "24 hour"
 }
 

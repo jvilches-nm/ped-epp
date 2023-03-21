@@ -12,7 +12,7 @@ view: student_demographics {
            from stars.student_snapshot ss
            inner join stars.districts d on d.district_key=ss.district_key and d.school_year=ss.school_year
            inner join stars.locations l on l.location_key=ss.location_key and l.school_year=ss.school_year
-           where month(ss.student_snapshot_date)=6
+           where month(ss.student_snapshot_date)=(select max(ss2.student_snapshot_date from stars.student_snapshot ss2 where ss2.school_year=ss.school_year)
          group by ss.school_Year, ss.district_Key, ss.location_key;;
      persist_for: "24 hour"
      indexes: ["district_key", "location_key", "school_year"]

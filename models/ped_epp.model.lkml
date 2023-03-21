@@ -91,7 +91,7 @@ explore: staff_assignment_snapshot {
     relationship: many_to_one
     type: inner
     sql_on: ${staff_assignment_snapshot.school_year_date}=${period.school_year_end_date} and
-      ${staff_assignment_snapshot.staff_snapshot_date_date}=${period.period_start_date};;
+      ${staff_assignment_snapshot.staff_snapshot_date}=${period.period_start_date};;
   }
   join: student_demographics {
     relationship: many_to_one
@@ -104,7 +104,8 @@ explore: staff_assignment_snapshot {
     relationship: many_to_one
     type: left_outer
     sql_on: ${staff_assignment_snapshot.location_key} = ${school_principal.location_key}
-      and ${staff_assignment_snapshot.school_year_date} = ${school_principal.school_year};;
+      and ${staff_assignment_snapshot.school_year_date} = ${school_principal.school_year}
+      and ${staff_assignment_snapshot.staff_snapshot_date} =  ${school_principal.staff_snapshot_date};;
   }
 }
 

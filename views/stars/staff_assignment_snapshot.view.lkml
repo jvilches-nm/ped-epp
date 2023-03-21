@@ -248,17 +248,8 @@ view: staff_assignment_snapshot {
     sql: ${TABLE}.Staff_Name ;;
   }
 
-  dimension_group: staff_snapshot_date {
-    type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
+  dimension: staff_snapshot_date {
+    type: date
     sql: ${TABLE}.Staff_Snapshot_Date ;;
   }
 

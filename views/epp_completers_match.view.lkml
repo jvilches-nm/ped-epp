@@ -112,13 +112,9 @@ view: epp_completers_match {
     primary_key: yes
     sql: ${TABLE}.university_id ;;
     link: {
-      label: "Masked Match Detail"
-      url: "https://nmpedpublic.cloud.looker.com/dashboards/485?University%20ID={{ epp_completers_match.university_id._value }}&University={{ epp_completers_match.university._value }}"
-          }
-    link: {
       label: "Match Detail"
       url: "https://nmpedpublic.cloud.looker.com/dashboards/261?University%20ID={{ epp_completers_match.university_id._value }}&University={{ epp_completers_match.university._value }}"
-    }
+      }
     }
 
   dimension: university_id_masked {
@@ -128,11 +124,7 @@ view: epp_completers_match {
     link: {
       label: "Masked Match Detail"
       url: "https://nmpedpublic.cloud.looker.com/dashboards/485?University%20ID={{ epp_completers_match.university_id._value }}&University={{ epp_completers_match.university._value }}"
-    }
-    link: {
-      label: "Match Detail"
-      url: "https://nmpedpublic.cloud.looker.com/dashboards/261?University%20ID={{ epp_completers_match.university_id._value }}&University={{ epp_completers_match.university._value }}"
-    }
+      }
     }
 
 
@@ -143,6 +135,5 @@ view: epp_completers_match {
 
   measure: count {
     type: count
-    drill_fields: [last_name, first_name]
   }
 }

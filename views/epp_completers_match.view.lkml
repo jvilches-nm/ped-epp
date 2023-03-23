@@ -103,11 +103,11 @@ view: epp_completers_match {
     sql: ${TABLE}.university_id ;;
     link: {
       label: "Masked Match Detail"
-      url: "https://nmpedpublic.cloud.looker.com/dashboards/485?University%20ID={{ epp_completers_match.university_id._value }} ?University={{ epp_completers_match.university._value }}"
-    }
+      url: "https://nmpedpublic.cloud.looker.com/dashboards/485?University%20ID={{ epp_completers_match.university_id._value }}&University={{ epp_completers_match.university._value }}"
+          }
     link: {
       label: "Match Detail"
-      url: "https://nmpedpublic.cloud.looker.com/dashboards/261?University%20ID={{ epp_completers_match.university_id._value }}?University={{ epp_completers_match.university._value }}"
+      url: "https://nmpedpublic.cloud.looker.com/dashboards/261?University%20ID={{ epp_completers_match.university_id._value }}&University={{ epp_completers_match.university._value }}"
     }
     }
 
@@ -117,11 +117,11 @@ view: epp_completers_match {
     sql: 'xxxxxx' + right(${TABLE}.university_id, 3) ;;
     link: {
       label: "Masked Match Detail"
-      url: "https://nmpedpublic.cloud.looker.com/dashboards/485?University%20ID={{ epp_completers_match.university_id._value }} ?University={{ epp_completers_match.university._value }}"
+      url: "https://nmpedpublic.cloud.looker.com/dashboards/485?University%20ID={{ epp_completers_match.university_id._value }}&University={{ epp_completers_match.university._value }}"
     }
     link: {
       label: "Match Detail"
-      url: "https://nmpedpublic.cloud.looker.com/dashboards/261?University%20ID={{ epp_completers_match.university_id._value }}?University={{ epp_completers_match.university._value }}"
+      url: "https://nmpedpublic.cloud.looker.com/dashboards/261?University%20ID={{ epp_completers_match.university_id._value }}&University={{ epp_completers_match.university._value }}"
     }
     }
 

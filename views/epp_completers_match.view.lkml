@@ -52,6 +52,16 @@ view: epp_completers_match {
     sql: ${TABLE}.graduation ;;
   }
 
+  dimension: graduation_year {
+    type: string
+    sql: right(${TABLE}.graduation, 4) ;;
+  }
+
+  dimension: graduation_semester {
+    type: string
+    sql: left(${TABLE}.graduation, len(${TABLE}.graduation)-5) ;;
+  }
+
   dimension: last_name {
     type: string
     sql: ${TABLE}.last_name ;;

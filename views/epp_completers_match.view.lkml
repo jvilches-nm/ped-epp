@@ -3,7 +3,7 @@ view: epp_completers_match {
     sql: select c.*, x.ped_staff, x.staff_id from epp.epp_completers c
            left outer join (select 'Yes' ped_staff, right(staff_id, 5) staff_id_last_five, staff_birthdate, staff_id
                              from stars.staff_snapshot where school_year>='2017-06-30'
-                            group by right(staff_id, 5), staff_birthdate, staff_id) x on x.staff_id_last_five = c.staff_id_last_five and x.staff_birthdate=c.Birthdate ;;
+                            group by right(staff_id, 5), staff_birthdate, staff_id) x on x.staff_id_last_five = right('00000'+ c.staff_id_last_five, 5) and x.staff_birthdate=c.Birthdate ;;
           persist_for: "24 hour"
           indexes: ["staff_id_last_five", "birthdate", "university", "university_id"]
   }

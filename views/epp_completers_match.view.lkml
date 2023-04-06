@@ -57,8 +57,14 @@ view: epp_completers_match {
     sql: right(${TABLE}.graduation, 4) ;;
   }
 
+  dimension: graduation_semester_sort {
+    type: number
+    sql: case ${graduation_semester} when 'Spring' then 1 when 'Summer' then 2 when 'Fall' then 3 else 4 end ;;
+  }
+
   dimension: graduation_semester {
     type: string
+    order_by_field: graduation_semester_sort
     sql: left(${TABLE}.graduation, len(${TABLE}.graduation)-5) ;;
   }
 

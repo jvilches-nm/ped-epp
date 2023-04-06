@@ -60,6 +60,25 @@ explore: license_user_endorsements {
   }
 }
 
+explore: epp_completers {
+  join: license_user_endorsements {
+    relationship: many_to_one
+    type: left_outer
+    sql_on: right(${license_user_endorsements.staff_id}, 5) = ${epp_completers.staff_id_last_five}
+          and ${license_user_endorsements.last_name} = ${epp_completers.last_name}
+          and ${license_user_endorsements.first_name} = ${epp_completers.first_name};;
+  }
+
+  join: teacher_assessments {
+    relationship: many_to_one
+    type: left_outer
+    sql_on: ${teacher_assessments.staff_id_last_five} = ${epp_completers.staff_id_last_five}
+          and ${teacher_assessments.last_name} = ${epp_completers.last_name}
+          and ${teacher_assessments.first_name} = ${epp_completers.first_name};;
+  }
+}
+
+
 explore: teacher_assessments {
 
   join: epp_completers_match {

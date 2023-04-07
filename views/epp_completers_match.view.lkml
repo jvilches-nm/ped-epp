@@ -105,7 +105,7 @@ view: epp_completers_match {
 
   dimension: staff_id_last_five {
     type: string
-    sql: ${TABLE}.staff_id_last_five ;;
+    sql: right('0000'+ ${TABLE}.staff_id_last_five, 5) ;;
   }
 
   dimension: university {

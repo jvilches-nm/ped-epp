@@ -40,7 +40,8 @@ explore: staff_consolidated {
     relationship: many_to_one
     type: inner
     sql_on: ${staff_consolidated.location_key} = ${school_principal.location_key}
-      and ${staff_consolidated.school_year} = ${school_principal.school_year};;
+      and ${staff_consolidated.school_year} = ${school_principal.school_year}
+      and ${staff_consolidated.snapshot_date} = ${school_principal.staff_snapshot_date};;
   }
 }
 

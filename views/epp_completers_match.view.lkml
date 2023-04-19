@@ -122,7 +122,7 @@ view: epp_completers_match {
     sql: ${TABLE}.university_id ;;
     link: {
       label: "Match Detail"
-      url: "https://nmpedpublic.cloud.looker.com/dashboards/580?University%20ID={{ epp_completers_match.university_id._value }}"
+      url: "https://nmpedpublic.cloud.looker.com/dashboards/583?University%20ID={{ epp_completers_match.university_id._value }}"
       }
     }
 

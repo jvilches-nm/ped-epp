@@ -91,6 +91,11 @@ view: epp_completers_match {
     sql: ${TABLE}.middle_initial ;;
   }
 
+  dimension: full_name {
+    type: string
+    sql: ${TABLE}.last_name + ', ' + ${TABLE}.first_name + ' ' + ${TABLE}.middle_initial ;;
+  }
+
   dimension: program_area {
     type: string
     sql: ${TABLE}.program_area ;;

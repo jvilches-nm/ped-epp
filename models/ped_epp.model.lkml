@@ -129,14 +129,14 @@ explore: staff_assignment_snapshot {
   }
 }
 
-explore: course_instruct_staff_student_snapshot {
-  label: "Course Snapshot"
+explore: course_instructor_student_demographics_agg {
+  label: "Instructor Courses - Student Demographics"
   join: staff_snapshot {
     relationship: many_to_one
     type: inner
     view_label: "Primary Instructor"
-    sql_on: ${course_instruct_staff_student_snapshot.staff_key_primary_instructor} = ${staff_snapshot.staff_key}
-      and ${course_instruct_staff_student_snapshot.staff_snapshot_date} = ${staff_snapshot.snapshot_date};;
+    sql_on: ${course_instructor_student_demographics_agg.staff_key} = ${staff_snapshot.staff_key}
+      and ${course_instructor_student_demographics_agg.snapshot_date} = ${staff_snapshot.snapshot_date};;
   }
   join: epp_completers_match {
     relationship: many_to_one
@@ -144,28 +144,22 @@ explore: course_instruct_staff_student_snapshot {
     sql_on: ${staff_snapshot.staff_id}=${epp_completers_match.staff_id};;
   }
 
-  join: student_snapshot {
-    relationship: many_to_one
-    type: inner
-    sql_on: ${course_instruct_staff_student_snapshot.student_key}=${student_snapshot.student_key}
-      and ${course_instruct_staff_student_snapshot.student_snapshot_date} = ${student_snapshot.student_snapshot_date};;
-  }
   join: locations {
     relationship: many_to_one
     type: left_outer
-    sql_on: ${course_instruct_staff_student_snapshot.location_key} = ${locations.location_key}
-      and ${course_instruct_staff_student_snapshot.school_year} = ${locations.school_year};;
+    sql_on: ${course_instructor_student_demographics_agg.location_key} = ${locations.location_key}
+      and ${course_instructor_student_demographics_agg.school_year_date} = ${locations.school_year};;
   }
   join: districts {
     relationship: many_to_one
     type: left_outer
-    sql_on: ${course_instruct_staff_student_snapshot.district_key} = ${districts.district_key}
-      and ${course_instruct_staff_student_snapshot.school_year} = ${districts.school_year};;
+    sql_on: ${course_instructor_student_demographics_agg.district_key} = ${districts.district_key}
+      and ${course_instructor_student_demographics_agg.school_year_date} = ${districts.school_year};;
   }
   join: period {
     relationship: many_to_one
     type: inner
-    sql_on: ${course_instruct_staff_student_snapshot.school_year}=${period.school_year_end_date} and
-      ${course_instruct_staff_student_snapshot.student_snapshot_date}=${period.period_start_date};;
+    sql_on: ${course_instructor_student_demographics_agg.school_year_date}=${period.school_year_end_date} and
+      ${course_instructor_student_demographics_agg.snapshot_date}=${period.period_start_date};;
   }
 }

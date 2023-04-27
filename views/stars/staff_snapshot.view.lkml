@@ -106,7 +106,8 @@ view: staff_snapshot {
 
   dimension: local_contract {
     type: string
-    sql: ${TABLE}.LOCAL_CONTRACT ;;
+    label: "National Board Certified"
+    sql: case ${TABLE}.LOCAL_CONTRACT when 'Yes' then 'Yes' when 'y' then 'Yes' else 'No' end ;;
   }
 
   dimension: location_key {

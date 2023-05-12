@@ -49,7 +49,7 @@ view: license_user_endorsements {
 
   dimension: cert_status {
     type: string
-    sql: case ${TABLE}.certStatus when 'ISSUED' then 'ISSUED' else 'UNKNOWN' end;;
+    sql: case ${TABLE}.certStatus when 'ISSUED' then 'ISSUED' else 'RESTRICTED' end;;
   }
 
   dimension: cert_type {

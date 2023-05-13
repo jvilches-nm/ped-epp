@@ -13,6 +13,7 @@ view: license_user_endorsements {
 
   dimension: cert_area {
     type: string
+    label: "Endorsement"
     sql: ${TABLE}.certArea ;;
   }
 

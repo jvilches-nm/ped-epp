@@ -51,12 +51,12 @@ view: epp_completers_match {
 
   dimension: graduation {
     type: string
-    sql: ${TABLE}.graduation ;;
+    sql: replace (${TABLE}.graduation, ' Semester', '') ;;
   }
 
   dimension: graduation_year {
     type: string
-    sql: right(${TABLE}.graduation, 4) ;;
+    sql: case when left(${TABLE}.graduation, 1) = '2' then left(${TABLE}.graduation, 4) else right(${TABLE}.graduation, 4) end ;;
   }
 
   dimension: graduation_semester_sort {
@@ -68,7 +68,7 @@ view: epp_completers_match {
   dimension: graduation_semester {
     type: string
     order_by_field: graduation_semester_sort
-    sql: left(${TABLE}.graduation, len(${TABLE}.graduation)-5) ;;
+    sql: case when left(${graduation}, 1) ='2' then substring(${graduation}, 6, len(${graduation})) else substring(${graduation}, 1, len(${graduation})-5) end;;
   }
 
   dimension: last_name {

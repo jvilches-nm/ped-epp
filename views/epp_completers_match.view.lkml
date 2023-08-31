@@ -1,6 +1,6 @@
 view: epp_completers_match {
   derived_table: {
-    sql:select c.*, x.ped_staff, x.staff_id, x.min_school_year, x.max_school_year, x.staff_years, case when x.max_school_year = '2023' then 'Yes-Current' when x.max_school_year >= (year(getdate())-6) then 'Yes-In Past 5 Years' when x.max_school_year >= (year(getdate())-10) then 'Yes-More Than 5 Years Ago' else 'No' end staff_status
+    sql:select c.*, x.ped_staff, x.staff_id, x.min_school_year, x.max_school_year, x.staff_years, case when x.max_school_year = year(dateadd(m, 3, getdate())) then 'Yes-Current' when x.max_school_year >= (year(getdate())-6) then 'Yes-In Past 5 Years' when x.max_school_year >= (year(getdate())-10) then 'Yes-More Than 5 Years Ago' else 'No' end staff_status
            from epp.epp_completers c
            left outer join (select 'Yes' ped_staff, right(staff_id, 5) staff_id_last_five, staff_birthdate, staff_id, count(distinct year(school_year)) staff_years, min(year(school_year)) min_school_year, max(year(school_year)) max_school_year
                              from stars.staff_snapshot

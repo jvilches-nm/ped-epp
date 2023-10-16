@@ -138,7 +138,7 @@ view: epp_completers_match {
 
   dimension: university_id_masked {
     type: string
-    primary_key: yes
+    primary_key: no
     sql: 'xxxxxx' + right(${TABLE}.university_id, 3) ;;
     link: {
       label: "Masked Match Detail"
